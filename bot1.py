@@ -41,8 +41,9 @@ useragent = ['Mozilla/4.0 (compatible; MSIE 5.0; SunOS 5.10 sun4u; X11)',
                    "Mozilla/5.0 (Windows NT 5.0; WOW64; rv:5.0) Gecko/20100101 Firefox/5.0",
                    "Mozilla/5.0 (Windows NT 5.0; rv:5.0) Gecko/20100101 Firefox/5.0"]
  
-referer = ['http://google.com','http://bing.com','http://facebook.com','http://twitter.com', 'https://search.yahoo.com', 'https://duckduckgo.com/']
-link    = 'https://yourdomain.com' #input link
+referer = ['http://google.com','http://bing.com','http://facebook.com','http://twitter.com', 'https://adbtc.top/'
+           'https://search.yahoo.com', 'https://duckduckgo.com/', 'https://faucetpay.io/']
+link    = 'https://kasihcoin.xyz' #input link
  
 def Autoclicker(proxy1):
     try:
@@ -53,7 +54,7 @@ def Autoclicker(proxy1):
         opener.addheaders = [('User-agent', random.choice(useragent)), ('Referer', random.choice(referer))]
         urllib.request.install_opener(opener)
         f = urllib.request.urlopen(link)
-        if "https://yourdomain.com" in f.read(): #input link
+        if "https://kasihcoin.xyz" in f.read(): #input link
            print("[X] Link Berhasil Di Kunjungi ...")
         else:
            print("[X] Link gagal di kunjungi !")
