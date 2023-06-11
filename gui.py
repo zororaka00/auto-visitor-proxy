@@ -22,6 +22,7 @@ def make_request():
     try:
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')  # Menjalankan Chrome dalam mode headless
+        options.add_argument('--remote-debugging-port=0')  # Menonaktifkan DevTools
 
         service = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=options)
@@ -45,8 +46,7 @@ def make_request():
 
     if request_count < request_limit:
         wait_time = random.randint(start_time, stop_time)
-        time.sleep(wait_time)
-        make_request()
+        log_text.after(wait_time * 1000, make_request)  # Waktu dalam milidetik
     else:
         log_text.configure(state=tk.NORMAL)
         log_text.insert(tk.END, f"REQUEST END\n\n", "success")
@@ -77,6 +77,7 @@ def start_requests():
     log_text.delete('1.0', tk.END)
     log_text.configure(state=tk.DISABLED)
 
+    # Membuat thread baru untuk menjalankan permintaan
     request_thread = threading.Thread(target=make_request)
     request_thread.start()
 
